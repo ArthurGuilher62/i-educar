@@ -13,6 +13,7 @@ class ResourceCourseRequest extends ResourceRequest
             'school' => ['nullable', 'integer', 'min:1'],
             'standard_calendar' => ['nullable', 'boolean'],
             'course' => ['nullable', 'integer', 'min:1'],
+            'hora_falta' => ['nullable', 'integer', 'min:0'],
         ];
     }
 
@@ -23,6 +24,7 @@ class ResourceCourseRequest extends ResourceRequest
             'school' => 'Escola',
             'standard_calendar' => 'Sem Padrão Escolar',
             'course' => 'Curso',
+            'hora_falta' => 'hora_falta',
         ];
     }
 }

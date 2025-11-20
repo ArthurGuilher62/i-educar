@@ -494,6 +494,17 @@ JS;
         $this->ref_cod_instituicao = (int) $this->ref_cod_instituicao;
 
         $timesep = explode(':', $this->carga_horaria);
+        $horas = (int) $timesep[0];
+        $minutos = (int) $timesep[1];
+
+        if ($horas === 0 && $minutos === 0) {
+            $this->mensagem = 'A carga horária não pode ser 00:00.';
+            return false;
+        }
+        if ($horas > 24 || ($horas === 24 && $minutos > 0) || $minutos > 59) {
+            $this->mensagem = 'Carga horária inválida. Máximo permitido: 24:00.';
+            return false;
+        }
         $hour = (int) $timesep[0] + ((int) ($timesep[1] / 60));
         $min = abs(((int) ($timesep[1] / 60)) - ($timesep[1] / 60)) . '<br>';
         $this->carga_horaria = $hour + $min;
